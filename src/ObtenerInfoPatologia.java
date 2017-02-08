@@ -1,29 +1,23 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
-import proyectoWeb.Persona;
-
 /**
- * Servlet implementation class DamePersona
+ * Servlet implementation class ObtenerInfoPatologia
  */
-@WebServlet("/DamePersona")
-public class DamePersona extends HttpServlet {
+@WebServlet("/ObtenerInfoPatologia")
+public class ObtenerInfoPatologia extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DamePersona() {
+    public ObtenerInfoPatologia() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +27,10 @@ public class DamePersona extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		Persona persona = new Persona("Gloria", 26);
-		Gson gson = new Gson();
-		String json = gson.toJson(persona);
 		
-		PrintWriter pw = response.getWriter();
-		pw.write(json);
-		
-		response.setContentType("application/json");
+		String valor_id = request.getParameter("id");
+		System.out.println("valor_id = "+valor_id);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -49,21 +38,10 @@ public class DamePersona extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-	
-	@Override
-	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.service(arg0, arg1);
-		System.out.println("Pasa por Service");
-	}
-	
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub
-		super.init();
-		System.out.println("Pasa por Init");
+		System.out.println("LLamando al DOPOST");
+		//doGet(request, response);
+		String str = request.getParameter("id");
+		System.out.println("ID = "+str);
 	}
 
 }

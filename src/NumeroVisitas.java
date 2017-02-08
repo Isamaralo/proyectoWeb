@@ -9,21 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
-import proyectoWeb.Persona;
-
 /**
- * Servlet implementation class DamePersona
+ * Servlet implementation class NumeroVisitas
  */
-@WebServlet("/DamePersona")
-public class DamePersona extends HttpServlet {
+@WebServlet("/NumeroVisitas")
+public class NumeroVisitas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private int contador;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DamePersona() {
+    public NumeroVisitas() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,14 +30,7 @@ public class DamePersona extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		Persona persona = new Persona("Gloria", 26);
-		Gson gson = new Gson();
-		String json = gson.toJson(persona);
-		
-		PrintWriter pw = response.getWriter();
-		pw.write(json);
-		
-		response.setContentType("application/json");
+		response.getWriter().append("Número de visitas = "+contador);
 	}
 
 	/**
@@ -49,21 +38,25 @@ public class DamePersona extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+	}
+
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		contador = 0;
+		System.out.println("Ha pasado por el init");
+		System.out.println("contador = "+contador);
 	}
 	
 	@Override
 	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		System.out.println("Ha pasado por el service");
+		contador++;
+		System.out.println("contador = "+contador);
 		super.service(arg0, arg1);
-		System.out.println("Pasa por Service");
 	}
-	
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub
-		super.init();
-		System.out.println("Pasa por Init");
-	}
-
 }
