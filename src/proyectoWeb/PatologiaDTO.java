@@ -61,7 +61,7 @@ public class PatologiaDTO {
 	{
 		String res = "";
 		for (SintomaDTO s : lista_sintomas) {
-			res += s.toString()+"\n";
+			res += s.toString()+"<br>";
 		}
 		return res;
 	}
@@ -73,7 +73,7 @@ public class PatologiaDTO {
 		//return super.toString();
 		String res = null;
 			
-			res = "Nombre: "+this.nombre+"\nDescripción: "+this.descripcion+"\nTratamiento: "+this.tratamiento+"\nCausa: "+this.causa+"\nSíntomas: "+mostrarListaSintomas();
+			res = "Nombre: "+this.nombre+"<br>Descripción: <br>"+this.descripcion+"<br>Tratamiento: <br>"+this.tratamiento+"<br>Causa: <br>"+this.causa+"<br>Síntomas: <br>"+mostrarListaSintomas();
 			
 		return res;
 	}
