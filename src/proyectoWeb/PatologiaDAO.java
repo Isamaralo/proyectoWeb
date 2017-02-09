@@ -102,6 +102,8 @@ public class PatologiaDAO {
 				sintoma = new SintomaDTO(id_sintoma, descripcion_sintoma);
 				lista_sintomas.add(sintoma);
 			}
+			if (rset2 != null) 	{ try { rset2.close(); } catch (Exception e2) { e2.printStackTrace(); }}
+			if (stmt2 != null)	{ try {	stmt2.close(); } catch (Exception e2) { e2.printStackTrace(); }}
 			
 		return lista_sintomas;
 	}
