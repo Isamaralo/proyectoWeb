@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,13 +37,12 @@ public class BuscarPatologia extends HttpServlet {
 		
 		PatologiaService ps = new PatologiaService();
 		try {
-			ps.buscarPatologiaPorID(idn);
+			PrintWriter pw = response.getWriter().append(ps.buscarPatologiaPorID(idn).getNombre());
+			System.out.println(pw);
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

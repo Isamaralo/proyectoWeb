@@ -13,8 +13,8 @@ import com.jcraft.jsch.Session;
 
 public class PatologiaDAO {
 
-	private final static String S_PATH_FILE_PRIVATE_KEY = "id_rsa.ppk";
-	private final static String S_PATH_FILE_KNOWN_HOSTS = "known_hosts";
+	private final static String S_PATH_FILE_PRIVATE_KEY = "C:/Users/Administrador.000/workspace/proyectoWeb/id_rsa.ppk";
+	private final static String S_PATH_FILE_KNOWN_HOSTS = "C:/Users/Administrador.000/workspace/proyectoWeb/known_hosts";
 	private final static String S_PASS_PHRASE = "mypassphrase";
 	private final static int LOCAl_PORT = 3307; 
 	private final static int REMOTE_PORT = 3306; 
