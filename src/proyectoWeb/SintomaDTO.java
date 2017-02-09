@@ -22,4 +22,11 @@ public class SintomaDTO {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		//return super.toString();
+		return this.descripcion;
+	}
 }

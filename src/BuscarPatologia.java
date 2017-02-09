@@ -37,7 +37,7 @@ public class BuscarPatologia extends HttpServlet {
 		
 		PatologiaService ps = new PatologiaService();
 		try {
-			PrintWriter pw = response.getWriter().append(ps.buscarPatologiaPorID(idn).getNombre());
+			PrintWriter pw = response.getWriter().append(ps.buscarPatologiaPorID(idn).toString());
 			System.out.println(pw);
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block

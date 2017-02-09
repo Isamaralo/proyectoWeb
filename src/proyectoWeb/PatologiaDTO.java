@@ -57,4 +57,25 @@ public class PatologiaDTO {
 		this.lista_sintomas = lista_sintomas;
 	}
 	
+	public String mostrarListaSintomas ()
+	{
+		String res = "";
+		for (SintomaDTO s : lista_sintomas) {
+			res += s.toString()+"\n";
+		}
+		return res;
+	}
+	
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		//return super.toString();
+		String res = null;
+			
+			res = "Nombre: "+this.nombre+"\nDescripción: "+this.descripcion+"\nTratamiento: "+this.tratamiento+"\nCausa: "+this.causa+"\nSíntomas: "+mostrarListaSintomas();
+			
+		return res;
+	}
+	
 }
