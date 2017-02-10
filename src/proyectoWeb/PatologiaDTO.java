@@ -73,7 +73,7 @@ public class PatologiaDTO {
 		//return super.toString();
 		String res = null;
 			
-			res = "Nombre: "+this.nombre+"<br>Descripción: <br>"+this.descripcion+"<br>Tratamiento: <br>"+this.tratamiento+"<br>Causa: <br>"+this.causa+"<br>Síntomas: <br>"+mostrarListaSintomas();
+			res = "<strong>Nombre:</strong> "+this.nombre+"<br><strong>Descripción:</strong> <br>"+this.descripcion+"<br><strong>Tratamiento:</strong> <br>"+this.tratamiento+"<br><strong>Causa:</strong> <br>"+this.causa+"<br><strong>Síntomas:</strong> <br>"+mostrarListaSintomas();
 			
 		return res;
 	}
