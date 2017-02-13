@@ -108,4 +108,43 @@ public class PatologiaDAO {
 		return lista_sintomas;
 	}
 	
+	public List<PatologiaDTO> getListaPatologias () throws Throwable
+	{
+		List<PatologiaDTO> lista_patologias = new ArrayList<PatologiaDTO>();
+			
+			PatologiaDTO patologia = null;
+			Connection conn = null;
+			ResultSet rset = null;
+			Statement stmt = null;
+			
+			try
+			{
+				conectate_A_SSH();
+				
+				DriverManager.registerDriver (new com.mysql.jdbc.Driver());
+				conn = DriverManager.getConnection (cadena_conexion, user, password);
+				stmt = conn.createStatement();
+	  	        
+				rset = stmt.executeQuery(Consulta.CONSULTA_LISTAR_PATOLOGIAS);
+				while (rset.next())
+			    {
+					patologia = new PatologiaDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), null);
+					lista_patologias.add(patologia);
+			    }
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			finally 
+			{
+				if (rset != null) 	{ try { rset.close(); } catch (Exception e2) { e2.printStackTrace(); }}
+				if (stmt != null)	{ try {	stmt.close(); } catch (Exception e2) { e2.printStackTrace(); }}
+				if (conn != null) 	{ try { conn.close(); } catch (Exception e3) { e3.printStackTrace(); }}
+			  	desconectate_D_SSH(); 
+			}
+			
+		return lista_patologias;
+	}
+	
 }
