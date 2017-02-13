@@ -128,7 +128,7 @@ public class PatologiaDAO {
 				rset = stmt.executeQuery(Consulta.CONSULTA_LISTAR_PATOLOGIAS);
 				while (rset.next())
 			    {
-					patologia = new PatologiaDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), null);
+					patologia = new PatologiaDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), getSintomasPorPatologiaID(conn, rset.getInt(1)));
 					lista_patologias.add(patologia);
 			    }
 			}

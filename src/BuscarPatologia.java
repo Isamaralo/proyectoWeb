@@ -42,19 +42,18 @@ public class BuscarPatologia extends HttpServlet {
 		int idn = Integer.parseInt(id); 
 		
 		PatologiaService ps = new PatologiaService();
-		/*HashMap<Integer, PatologiaDTO> hm = new HashMap<Integer, PatologiaDTO>();
+		HashMap<Integer, PatologiaDTO> hm = new HashMap<Integer, PatologiaDTO>();
 		
 		for (PatologiaDTO patologia : lista_patologias) {
  	    	hm.put(patologia.getId(), patologia);
   	    }
 		PrintWriter pw = response.getWriter().append(hm.get(idn).toString());
-		System.out.println(hm.get(idn).toString());*/
-		try {
+		/*try {
 			PrintWriter pw = response.getWriter().append(ps.buscarPatologiaPorID(idn).toString());
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	/**
