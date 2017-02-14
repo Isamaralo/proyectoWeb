@@ -11,7 +11,7 @@ import java.util.List;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
-public class PatologiaDAO {
+public class PatologiaDAOOld {
 
 	private final static String S_PATH_FILE_PRIVATE_KEY = "C:/Users/Administrador.000/workspace/proyectoWeb/id_rsa.ppk";
 	private final static String S_PATH_FILE_KNOWN_HOSTS = "C:/Users/Administrador.000/workspace/proyectoWeb/known_hosts";
@@ -44,12 +44,12 @@ public class PatologiaDAO {
 		sesion.disconnect();
 	}
 	
-	public PatologiaDTO getPatologiaPorID (int id) throws Throwable
+	public PatologiaDTOOld getPatologiaPorID (int id) throws Throwable
 	{
 		Connection conn = null;
 		ResultSet rset = null;
 		Statement stmt = null;
-		PatologiaDTO patologia = null;
+		PatologiaDTOOld patologia = null;
 		
 		try
 		{
@@ -62,7 +62,7 @@ public class PatologiaDAO {
   	        rset = stmt.executeQuery(Consulta.CONSULTA_PATOLOGIAS_POR_ID+id);
 			while (rset.next())
 		    {
-				patologia = new PatologiaDTO(rset.getInt(1), rset.getNString(2), rset.getString(3), rset.getString(4), rset.getNString(5), getSintomasPorPatologiaID(conn, rset.getInt(1)));
+				patologia = new PatologiaDTOOld(rset.getInt(1), rset.getNString(2), rset.getString(3), rset.getString(4), rset.getNString(5), getSintomasPorPatologiaID(conn, rset.getInt(1)));
 			}
 		}
 		catch(Exception e)
@@ -79,7 +79,7 @@ public class PatologiaDAO {
 		return patologia;
 	}
 	
-	public PatologiaDTO getPatologiaPorNombre (String nombre)
+	public PatologiaDTOOld getPatologiaPorNombre (String nombre)
 	{
 		return null;
 	}
@@ -108,11 +108,11 @@ public class PatologiaDAO {
 		return lista_sintomas;
 	}
 	
-	public List<PatologiaDTO> getListaPatologias () throws Throwable
+	public List<PatologiaDTOOld> getListaPatologias () throws Throwable
 	{
-		List<PatologiaDTO> lista_patologias = new ArrayList<PatologiaDTO>();
+		List<PatologiaDTOOld> lista_patologias = new ArrayList<PatologiaDTOOld>();
 			
-			PatologiaDTO patologia = null;
+			PatologiaDTOOld patologia = null;
 			Connection conn = null;
 			ResultSet rset = null;
 			Statement stmt = null;
@@ -128,7 +128,7 @@ public class PatologiaDAO {
 				rset = stmt.executeQuery(Consulta.CONSULTA_LISTAR_PATOLOGIAS);
 				while (rset.next())
 			    {
-					patologia = new PatologiaDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), getSintomasPorPatologiaID(conn, rset.getInt(1)));
+					patologia = new PatologiaDTOOld(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), getSintomasPorPatologiaID(conn, rset.getInt(1)));
 					lista_patologias.add(patologia);
 			    }
 			}

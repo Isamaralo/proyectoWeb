@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import proyectoWeb.PatologiaDTO;
-import proyectoWeb.PatologiaService;
+import proyectoWeb.PatologiaDTOOld;
+import proyectoWeb.PatologiaServiceOld;
 
 /**
  * Servlet implementation class BuscarPatologia
  */
 @WebServlet("/BuscarPatologia")
-public class BuscarPatologia extends HttpServlet {
+public class BuscarPatologiaOld extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-    List<PatologiaDTO> lista_patologias;
+    List<PatologiaDTOOld> lista_patologias;
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BuscarPatologia() {
+    public BuscarPatologiaOld() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,10 +41,10 @@ public class BuscarPatologia extends HttpServlet {
 		
 		int idn = Integer.parseInt(id); 
 		
-		PatologiaService ps = new PatologiaService();
-		HashMap<Integer, PatologiaDTO> hm = new HashMap<Integer, PatologiaDTO>();
+		PatologiaServiceOld ps = new PatologiaServiceOld();
+		HashMap<Integer, PatologiaDTOOld> hm = new HashMap<Integer, PatologiaDTOOld>();
 		
-		for (PatologiaDTO patologia : lista_patologias) {
+		for (PatologiaDTOOld patologia : lista_patologias) {
  	    	hm.put(patologia.getId(), patologia);
   	    }
 		PrintWriter pw = response.getWriter().append(hm.get(idn).toString());
@@ -68,8 +68,8 @@ public class BuscarPatologia extends HttpServlet {
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
-		PatologiaService ps = new PatologiaService();
-		this.lista_patologias = new ArrayList<PatologiaDTO>();
+		PatologiaServiceOld ps = new PatologiaServiceOld();
+		this.lista_patologias = new ArrayList<PatologiaDTOOld>();
 		
 		try {
 			this.lista_patologias = ps.listarPatologias();
