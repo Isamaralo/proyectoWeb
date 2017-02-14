@@ -36,7 +36,7 @@ public class PruebaPoolSSH extends HttpServlet {
 		// TODO Auto-generated method stub
 		String select_pat = "Select id_patol from Patologias where nom_patol = 'Queratocono'";
 		Pool pool = Pool.getInstance();
-		Connection con = pool.getConnection();
+		Connection con = Pool.getConnection();
 		Statement st = null;
 		ResultSet rs = null;
 		int id_patol = -5;
@@ -52,7 +52,7 @@ public class PruebaPoolSSH extends HttpServlet {
 		}
 		finally
 		{
-			pool.liberarRecursos(con, st, rs);
+			Pool.liberarRecursos(con, st, rs);
 		}
 	}
 
